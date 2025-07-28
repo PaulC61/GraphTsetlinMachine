@@ -20,7 +20,7 @@
 
 import numpy as np
 import hashlib
-from numba import jit
+# from numba import jit
 import sys
 
 class Graphs():
@@ -88,8 +88,8 @@ class Graphs():
 	def set_number_of_graph_nodes(self, graph_id, number_of_graph_nodes):
 		self.number_of_graph_nodes[graph_id] = number_of_graph_nodes
 
-	@staticmethod
-	@jit(nopython=True)
+	# @staticmethod
+	# @jit(nopython=True)
 	def _initialize_node_hypervectors(hypervector_size, X):
 		for i in range(X.shape[0]):
 			for k in range(hypervector_size, hypervector_size*2):
@@ -145,8 +145,8 @@ class Graphs():
 		self.edge[edge_index][1] = edge_type_id
 		self.graph_node_edge_counter[self.node_index[graph_id] + source_node_id] += 1
 
-	@staticmethod
-	@jit(nopython=True)
+	# @staticmethod
+	# @jit(nopython=True)
 	def _add_graph_node_property(hypervectors, hypervector_size, graph_index, node, symbol, X):
 		for k in hypervectors[symbol,:]:
 			chunk = k // 32
